@@ -1,8 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-orange: #f58220;
+  --error-color: #ef4444;
 }
 
 @theme inline {
@@ -10,6 +12,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-main-orange: var(--main-orange);
+  --color-error: var(--error-color);
+
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +31,46 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.line {
+  position: absolute;
+  width: 160%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: floatLine 10s linear infinite;
+}
+
+.line-1 {
+  top: 20%;
+  left: -20%;
+  transform: rotate(12deg);
+}
+
+.line-2 {
+  top: 50%;
+  left: -30%;
+  transform: rotate(-8deg);
+  animation-delay: 2s;
+}
+
+.line-3 {
+  top: 75%;
+  left: -25%;
+  transform: rotate(18deg);
+  animation-delay: 4s;
+}
+
+@keyframes floatLine {
+  0% {
+    transform: translateX(-10%) rotate(12deg);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10%) rotate(12deg);
+    opacity: 0.4;
+  }
 }
