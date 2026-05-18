@@ -152,8 +152,6 @@ export default function FlightsPage(): React.JSX.Element {
     setToCity(fromCity);
   };
 
-  console.log(isListOpen);
-
   const filteredFlights = useMemo(() => {
     return MOCK_FLIGHTS.filter((flight) => {
       if (filterDirectOnly && !flight.isDirect) return false;
@@ -391,7 +389,7 @@ export default function FlightsPage(): React.JSX.Element {
       </div>
       <AnimatePresence>
         {bookedFlight && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
