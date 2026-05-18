@@ -1,44 +1,52 @@
-import { AnimatedBackground } from './AnimatedBackground';
+'use client';
 
-export function Hero() {
+import React from 'react';
+import { AnimatedBackground } from './AnimatedBackground';
+import { Plane } from 'lucide-react';
+import { WorldClocks } from '@/components/sections/home/WorldClocks';
+import BookingBlock from '@/components/sections/home/BookingBlock';
+
+export function Hero(): React.JSX.Element {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20">
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden pt-24 pb-24">
       <AnimatedBackground />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-2 lg:items-center">
-        <div>
-          <p className="mb-4 inline-flex rounded-full bg-white/20 px-4 py-2 text-sm backdrop-blur-xl">
-            Smart Flight Platform
-          </p>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 md:px-8 lg:items-center">
+        <div className="flex w-full flex-col justify-between gap-10">
+          <WorldClocks />
 
-          <h1 className="max-w-xl text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-7xl">
-            Путешествия.
-            <br />
-            Переосмысленные.
-          </h1>
-
-          <p className="mt-6 max-w-xl text-base text-white/80 sm:text-lg">
-            Умный поиск авиабилетов и маршрутов в реальном времени с максимальной скоростью,
-            простотой и контролем.
-          </p>
-
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <button className="bg-main-orange rounded-2xl px-8 py-4 font-semibold text-white shadow-xl">
-              Найти рейсы
-            </button>
-            <button className="rounded-2xl border border-white/40 px-8 py-4 font-semibold text-white">
-              Исследовать маршруты
-            </button>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-white/20 bg-white/15 p-5 shadow-2xl backdrop-blur-2xl">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {['Нью-Йорк → Париж', '07:30 → 13:00', 'Прямой рейс', '$350'].map((item) => (
-              <div key={item} className="rounded-2xl bg-white/90 p-5 text-sm font-medium shadow-md">
-                {item}
+          <div className="flex w-full flex-col items-center gap-6 lg:flex-row">
+            <div className="flex w-full min-w-0 flex-1 flex-col items-start">
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1 text-xs font-bold text-[#ff7e21] dark:bg-orange-950/40">
+                <Plane className="h-3.5 w-3.5 animate-pulse fill-current" />
+                <span>Умные перелеты</span>
               </div>
-            ))}
+
+              <h1 className="mt-3 bg-gradient-to-r from-[#0f2043] via-[#2563eb] to-[#ff7e21] bg-clip-text text-3xl leading-[1.1] font-black tracking-tight text-transparent uppercase sm:text-[44px]">
+                Сокращаем расстояния
+                <br />
+                Экономим время
+              </h1>
+
+              <p className="text-md mt-6 max-w-lg leading-relaxed font-medium text-[#1e293b]/90">
+                Компания осуществляет бронирование и продажу авиабилетов и туристических услуг и
+                работает на туристическом рынке Кыргызстана с 2000г.
+              </p>
+
+              <div className="mt-10 flex w-full flex-wrap gap-4 sm:w-auto">
+                <button className="group relative flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff7e21] to-[#ff6a00] px-8 font-bold text-white shadow-lg shadow-orange-500/20 transition-all hover:shadow-orange-500/30 hover:brightness-110 active:scale-95 sm:w-auto">
+                  Поиск билетов
+                  <Plane className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </button>
+                <button className="flex h-14 w-full items-center justify-center rounded-full border border-slate-300 bg-white/30 px-8 font-bold text-[#0f2043] backdrop-blur-sm transition-all hover:bg-white/60 active:scale-95 sm:w-auto">
+                  Найти маршрут
+                </button>
+              </div>
+            </div>
+
+            <div className="flex w-full min-w-0 flex-1">
+              <BookingBlock />
+            </div>
           </div>
         </div>
       </div>

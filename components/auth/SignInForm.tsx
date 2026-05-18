@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { LoginInput, loginSchema } from '@/components/lib/validations/auth';
+import { LoginInput, loginSchema } from '@/lib/validations/auth';
 
 export function SignInForm() {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -41,7 +41,7 @@ export function SignInForm() {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-[32px] border border-white/20 bg-white/92 shadow-[0_20px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+    <section className="relative overflow-hidden rounded-[32px] border border-white/20 bg-white/62 shadow-[0_20px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl">
       <div className="pointer-events-none absolute top-0 right-0 h-40 w-40 rounded-full bg-orange-200/40 blur-3xl" />
 
       <div className="relative z-10 p-4 md:p-10">
@@ -56,7 +56,7 @@ export function SignInForm() {
             />
           </div>
 
-          <div className="mt-6 hidden text-center md:flex">
+          <div className="mt-6 hidden text-center md:flex md:flex-col">
             <h1 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
               Добро пожаловать
             </h1>
@@ -104,7 +104,7 @@ export function SignInForm() {
 
               <Link
                 href="/forgot-password"
-                className="text-xs font-medium text-orange-500 transition-colors hover:text-orange-600"
+                className="text-xs font-medium text-slate-900 transition-colors hover:text-orange-600"
               >
                 Забыли пароль?
               </Link>
@@ -149,7 +149,7 @@ export function SignInForm() {
             {isSubmitting ? 'Вход...' : 'Войти'}
           </button>
         </form>
-        <div className="mb-8 border-t border-slate-100 pt-6 text-center">
+        <div className="mb-8 pt-6 text-center">
           <p className="text-sm text-slate-500">
             Нет аккаунта?{' '}
             <Link

@@ -6,5 +6,6 @@ export const ROUTES = {
   PRICE: '/price',
   HELP: '/help',
   TOURS: '/tours',
+  EVENTS: '/events',
   CONTACT: '/contact',
 };

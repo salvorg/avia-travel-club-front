@@ -28,49 +28,62 @@
 }
 
 body {
-  background: var(--background);
+  background-color: transparent;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.line {
-  position: absolute;
-  width: 160%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-  animation: floatLine 10s linear infinite;
+.bg-avia-design {
+  background-color: #f1f5f9;
+  background-image:
+    radial-gradient(at left bottom, rgba(255, 255, 255, 0.95) 0%, transparent 60%),
+    radial-gradient(at 35% 65%, rgba(204, 251, 241, 0.7) 0%, transparent 50%),
+    radial-gradient(at right top, rgba(15, 32, 67, 0.98) 0%, transparent 70%),
+    linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+  background-attachment: fixed;
 }
 
-.line-1 {
-  top: 20%;
-  left: -20%;
-  transform: rotate(12deg);
-}
+@theme {
+  --animate-marquee-left: marquee-left 40s linear infinite;
+  --animate-marquee-right: marquee-right 40s linear infinite;
+  --animate-marquee-clocks: marquee-clocks 30s linear infinite;
 
-.line-2 {
-  top: 50%;
-  left: -30%;
-  transform: rotate(-8deg);
-  animation-delay: 2s;
-}
-
-.line-3 {
-  top: 75%;
-  left: -25%;
-  transform: rotate(18deg);
-  animation-delay: 4s;
-}
-
-@keyframes floatLine {
-  0% {
-    transform: translateX(-10%) rotate(12deg);
-    opacity: 0.4;
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
-  50% {
-    opacity: 1;
+
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
-  100% {
-    transform: translateX(10%) rotate(12deg);
-    opacity: 0.4;
+
+  @keyframes marquee-clocks {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
+}
+
+@utility unique-marquee-left {
+  animation: var(--animate-marquee-left);
+}
+
+@utility unique-marquee-right {
+  animation: var(--animate-marquee-right);
+}
+
+@utility unique-marquee-clocks {
+  animation: var(--animate-marquee-clocks);
 }

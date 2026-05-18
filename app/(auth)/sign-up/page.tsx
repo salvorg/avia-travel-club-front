@@ -27,7 +27,7 @@ export default function SignUpPage() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.48))]" />
       <div className="pointer-events-none absolute top-[-200px] left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-orange-300/20 blur-3xl" />
 
-      <section className="animate-in fade-in zoom-in-95 relative z-10 w-full max-w-[560px] overflow-hidden rounded-[32px] border border-white/20 bg-white/92 shadow-[0_20px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl duration-500">
+      <section className="animate-in fade-in zoom-in-95 relative z-10 w-full max-w-[560px] overflow-hidden rounded-[32px] border border-white/20 bg-white/62 shadow-[0_20px_80px_rgba(15,23,42,0.18)] backdrop-blur-xl duration-500">
         <div className="pointer-events-none absolute top-0 right-0 h-40 w-40 rounded-full bg-orange-200/40 blur-3xl" />
         <div className="relative z-10 p-4 md:p-8">
           <div className="mb-8 flex flex-col items-center">
@@ -132,7 +132,7 @@ export default function SignUpPage() {
               Создать аккаунт
             </button>
           </form>
-          <div className="mb-8 border-t border-slate-100 pt-6 text-center">
+          <div className="mb-8 pt-6 text-center">
             <p className="text-sm text-slate-500">
               Уже есть аккаунт?{' '}
               <Link
