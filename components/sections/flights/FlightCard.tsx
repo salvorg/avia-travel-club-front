@@ -23,7 +23,6 @@ export const FlightCard = React.memo(function FlightCard({
       className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-all hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/5 dark:border-slate-800/80 dark:bg-slate-900/70"
     >
       <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-        {/* Авиакомпания */}
         <div className="flex items-center gap-3 sm:w-1/4">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-100 font-bold text-[#0f2043] ring-1 ring-slate-200/60 dark:bg-slate-800 dark:text-white dark:ring-slate-700/60">
             {flight.logo}
@@ -38,7 +37,6 @@ export const FlightCard = React.memo(function FlightCard({
           </div>
         </div>
 
-        {/* Маршрут и Интерактивная Дуга */}
         <div className="flex flex-1 items-center justify-between gap-4 px-2 sm:px-6">
           <div className="text-left">
             <span className="block font-mono text-xl font-black text-[#0f2043] dark:text-white">
@@ -50,7 +48,6 @@ export const FlightCard = React.memo(function FlightCard({
             </span>
           </div>
 
-          {/* Траектория полета на SVG */}
           <div className="relative flex flex-1 flex-col items-center justify-center px-4">
             <span className="absolute top-[-14px] flex items-center gap-1 text-[10px] font-bold tracking-tight text-slate-400 uppercase">
               <Clock className="h-3 w-3" /> {flight.duration}
@@ -111,7 +108,6 @@ export const FlightCard = React.memo(function FlightCard({
           </div>
         </div>
 
-        {/* Правая часть: Опции, Цена, Кнопка */}
         <div className="flex items-center justify-between border-t border-slate-100 pt-4 sm:w-1/4 sm:flex-col sm:items-end sm:justify-center sm:border-t-0 sm:pt-0">
           <div className="flex flex-col sm:items-end">
             <div className="mb-1 flex items-center gap-1.5 text-slate-400">
