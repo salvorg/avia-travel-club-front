@@ -143,7 +143,7 @@ export function DatePickerField({
                     type="button"
                     onClick={() => {
                       onChange(new Date(currentYear, currentMonth, day));
-                      setIsOpen(false);
+                      setIsOpen(!isOpen);
                     }}
                     className={`h-8 w-8 rounded-xl font-mono text-xs font-bold transition-all ${
                       isSelected

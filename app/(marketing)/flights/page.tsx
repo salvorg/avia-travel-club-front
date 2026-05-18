@@ -193,7 +193,7 @@ export default function FlightsPage(): React.JSX.Element {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
       </div>
 
-      <div className="relative z-50 mx-auto w-full max-w-[90%] px-4 pt-26 pb-24 sm:px-6 lg:px-8">
+      <div className="relative mx-auto w-full max-w-[90%] px-4 pt-26 pb-24 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
