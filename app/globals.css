@@ -46,7 +46,7 @@ body {
 @theme {
   --animate-marquee-left: marquee-left 40s linear infinite;
   --animate-marquee-right: marquee-right 40s linear infinite;
-  --animate-marquee-clocks: marquee-clocks 30s linear infinite;
+  --animate-marquee-clocks: marquee-clocks 15s linear infinite;
 
   @keyframes marquee-left {
     from {

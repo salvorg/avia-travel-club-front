@@ -31,7 +31,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2 transition-all duration-300">
+    <header className="fixed top-4 left-1/2 z-50 w-full max-w-[90%] -translate-x-1/2 transition-all duration-300">
       {/* Основной контейнер:
         - bg-white/40 по умолчанию, bg-white/70 при скролле для защиты текста от пестрого фона
         - border-white/40 создает яркую световую грань сверху (как на макете)
@@ -85,7 +85,7 @@ const Header = () => {
           </Link>
 
           <Link
-            href={ROUTES.TOURS}
+            href={ROUTES.FLIGHTS}
             className="group bg-main-orange relative hidden h-11 items-center justify-center overflow-hidden rounded-xl px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:brightness-110 active:scale-95 sm:flex"
           >
             {/* Текст кнопки: при ховере плавно смещается влево и исчезает */}

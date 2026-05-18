@@ -56,9 +56,9 @@ export function HotTours({ initialTours }: HotToursProps): React.JSX.Element {
   return (
     <section
       aria-label="Горящие туры"
-      className="relative w-full overflow-hidden py-16 md:py-24 dark:bg-slate-950/20"
+      className="relative w-full overflow-hidden pb-16 md:pb-24 dark:bg-slate-950/20"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90%] px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1 text-xs font-bold text-[#ff7e21] dark:bg-orange-950/40">
@@ -117,7 +117,7 @@ export function HotTours({ initialTours }: HotToursProps): React.JSX.Element {
                   src={tour.imageUrl}
                   alt={tour.title}
                   fill
-                  sizes="(max-w-7xl) 33vw, 100vw"
+                  sizes="(max-w-[90%]) 33vw, 100vw"
                   priority={false}
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />

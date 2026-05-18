@@ -115,7 +115,7 @@ export function ReviewsSection(): React.JSX.Element {
         {/*<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.12)_0%,transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,126,33,0.08)_0%,transparent_65%)]" />*/}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-[90%] px-4 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-black tracking-tight text-[#ff7e21] drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-4xl dark:text-white dark:drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
           Отзывы наших путешественников
         </h2>
@@ -132,7 +132,7 @@ export function ReviewsSection(): React.JSX.Element {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto mt-12 max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto mt-12 max-w-[90%] px-4 text-center sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           {!isSubmitted ? (
             <motion.div

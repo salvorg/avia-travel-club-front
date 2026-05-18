@@ -58,7 +58,7 @@ export function UpcomingEvents({ initialEvents }: UpcomingEventsProps): React.JS
       aria-label="Предстоящие мероприятия"
       className="relative w-full overflow-hidden py-16 md:py-24 dark:bg-slate-950/10"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90%] px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#2563eb] dark:bg-blue-950/40 dark:text-blue-400">
@@ -128,7 +128,7 @@ export function UpcomingEvents({ initialEvents }: UpcomingEventsProps): React.JS
                     src={event.imageUrl}
                     alt={event.title}
                     fill
-                    sizes="(max-w-7xl) 33vw, 100vw"
+                    sizes="(max-w-[90%]) 33vw, 100vw"
                     priority={false}
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
