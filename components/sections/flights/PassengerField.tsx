@@ -7,9 +7,14 @@ import { Users, ChevronDown } from 'lucide-react';
 interface PassengerFieldProps {
   value: number;
   onChange: (count: number) => void;
+  onOpen: (isOpen: boolean) => void;
 }
 
-export function PassengerField({ value, onChange }: PassengerFieldProps): React.JSX.Element {
+export function PassengerField({
+  value,
+  onChange,
+  onOpen,
+}: PassengerFieldProps): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -17,6 +22,7 @@ export function PassengerField({ value, onChange }: PassengerFieldProps): React.
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        onOpen(!isOpen);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -26,7 +32,10 @@ export function PassengerField({ value, onChange }: PassengerFieldProps): React.
   return (
     <div ref={containerRef} className="relative z-[30]">
       <div
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          onOpen(isOpen);
+          setIsOpen(!isOpen);
+        }}
         className="group relative cursor-pointer rounded-[2rem] border border-white/5 bg-white/5 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/10"
       >
         <label className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">

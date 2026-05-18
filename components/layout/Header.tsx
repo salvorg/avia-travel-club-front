@@ -8,7 +8,6 @@ import { ROUTES } from '@/utils/routes';
 
 const NAV_LINKS = [
   { href: ROUTES.FLIGHTS, label: 'Авиабилеты' },
-  { href: ROUTES.PRICE, label: 'Цены' },
   { href: ROUTES.TOURS, label: 'Туры' },
   { href: ROUTES.ABOUT, label: 'О нас' },
   { href: ROUTES.HELP, label: 'Поддержка' },

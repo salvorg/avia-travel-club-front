@@ -7,6 +7,7 @@ import { Calendar as CalendarIcon, ChevronDown, ChevronLeft, ChevronRight } from
 interface DatePickerFieldProps {
   value: Date;
   onChange: (date: Date) => void;
+  onOpen: (isOpen: boolean) => void;
 }
 
 const MONTHS = [
@@ -25,7 +26,11 @@ const MONTHS = [
 ];
 const WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
-export function DatePickerField({ value, onChange }: DatePickerFieldProps): React.JSX.Element {
+export function DatePickerField({
+  value,
+  onChange,
+  onOpen,
+}: DatePickerFieldProps): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(value.getMonth());
   const [currentYear, setCurrentYear] = useState(value.getFullYear());
@@ -35,6 +40,7 @@ export function DatePickerField({ value, onChange }: DatePickerFieldProps): Reac
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        onOpen(!isOpen);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -58,8 +64,11 @@ export function DatePickerField({ value, onChange }: DatePickerFieldProps): Reac
   return (
     <div ref={containerRef} className="relative z-[40]">
       <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="group relative cursor-pointer rounded-[2rem] border border-white/5 bg-white/5 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/10"
+        onClick={() => {
+          onOpen(isOpen);
+          setIsOpen(!isOpen);
+        }}
+        className="group cursor-pointer rounded-[2rem] border border-white/5 bg-white/5 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/10"
       >
         <label className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">
           Дата вылета

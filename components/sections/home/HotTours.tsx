@@ -54,10 +54,7 @@ export function HotTours({ initialTours }: HotToursProps): React.JSX.Element {
   }
 
   return (
-    <section
-      aria-label="Горящие туры"
-      className="relative w-full overflow-hidden pb-16 md:pb-24 dark:bg-slate-950/20"
-    >
+    <section aria-label="Горящие туры" className="relative w-full overflow-hidden pb-16 md:pb-24">
       <div className="mx-auto max-w-[90%] px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-xl">

@@ -56,7 +56,7 @@ export function UpcomingEvents({ initialEvents }: UpcomingEventsProps): React.JS
   return (
     <section
       aria-label="Предстоящие мероприятия"
-      className="relative w-full overflow-hidden py-16 md:py-24 dark:bg-slate-950/10"
+      className="relative w-full overflow-hidden py-16 md:py-24"
     >
       <div className="mx-auto max-w-[90%] px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">

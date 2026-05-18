@@ -93,7 +93,7 @@ export function ReviewsSection(): React.JSX.Element {
     <section
       ref={containerRef}
       aria-label="Отзывы наших клиентов"
-      className="relative w-full overflow-hidden border-t border-slate-200/60 py-24 dark:border-slate-900"
+      className="relative w-full overflow-hidden border-t border-slate-200/60 py-24"
     >
       <div className="absolute inset-0 -z-20 overflow-hidden select-none">
         <motion.div

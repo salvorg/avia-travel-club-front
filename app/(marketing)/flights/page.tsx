@@ -11,7 +11,7 @@ import {
   SlidersHorizontal,
   MapPin,
 } from 'lucide-react';
-import { Flight, FlightSearchSchema } from '@/types/flights';
+import { Flight } from '@/types/flights';
 import { FlightCard } from '@/components/sections/flights/FlightCard';
 import { DatePickerField } from '@/components/sections/flights/DatePickerField';
 import { PassengerField } from '@/components/sections/flights/PassengerField';
@@ -119,11 +119,12 @@ export default function FlightsPage(): React.JSX.Element {
   const [filterWithBaggage, setFilterWithBaggage] = useState(false);
   const [sortBy, setSortBy] = useState<'price' | 'duration'>('price');
   const [bookedFlight, setBookedFlight] = useState<Flight | null>(null);
+  const [isListOpen, setIsListOpen] = useState<boolean>(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % CITY_BACKGROUNDS.length);
-    }, 10000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -151,6 +152,8 @@ export default function FlightsPage(): React.JSX.Element {
     setToCity(fromCity);
   };
 
+  console.log(isListOpen);
+
   const filteredFlights = useMemo(() => {
     return MOCK_FLIGHTS.filter((flight) => {
       if (filterDirectOnly && !flight.isDirect) return false;
@@ -161,13 +164,11 @@ export default function FlightsPage(): React.JSX.Element {
         !flight.fromCode.toLowerCase().includes(fromCity.toLowerCase())
       )
         return false;
-      if (
+      return !(
         toCity &&
         !flight.toCity.toLowerCase().includes(toCity.toLowerCase()) &&
         !flight.toCode.toLowerCase().includes(toCity.toLowerCase())
-      )
-        return false;
-      return true;
+      );
     }).sort((a, b) =>
       sortBy === 'price' ? a.price - b.price : a.durationMinutes - b.durationMinutes
     );
@@ -194,7 +195,7 @@ export default function FlightsPage(): React.JSX.Element {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[90%] px-4 pt-26 pb-24 sm:px-6 lg:px-8">
+      <div className="relative z-50 mx-auto w-full max-w-[90%] px-4 pt-26 pb-24 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -216,7 +217,7 @@ export default function FlightsPage(): React.JSX.Element {
           className="mb-10 rounded-[3rem] border border-white/10 bg-black/40 p-6 shadow-[0_40px_100px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
         >
           <form onSubmit={handleSearch} className="grid grid-cols-1 gap-4 lg:grid-cols-5">
-            <div className="group relative rounded-[2rem] border border-white/5 bg-white/5 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/10">
+            <div className="group rounded-[2rem] border border-white/5 bg-white/5 px-6 py-4 transition-all hover:border-white/20 hover:bg-white/10">
               <label className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">
                 Откуда
               </label>
@@ -270,8 +271,12 @@ export default function FlightsPage(): React.JSX.Element {
               )}
             </div>
 
-            <DatePickerField value={selectedDate} onChange={setSelectedDate} />
-            <PassengerField value={passengers} onChange={setPassengers} />
+            <DatePickerField
+              value={selectedDate}
+              onChange={setSelectedDate}
+              onOpen={setIsListOpen}
+            />
+            <PassengerField value={passengers} onChange={setPassengers} onOpen={setIsListOpen} />
 
             <motion.button
               type="submit"
@@ -353,38 +358,40 @@ export default function FlightsPage(): React.JSX.Element {
           </motion.div>
 
           <div className="flex flex-col gap-4 lg:col-span-3">
-            <AnimatePresence mode="popLayout">
-              {filteredFlights.length > 0 ? (
-                filteredFlights.map((flight, index) => (
+            {isListOpen && (
+              <AnimatePresence mode="popLayout">
+                {filteredFlights.length > 0 ? (
+                  filteredFlights.map((flight, index) => (
+                    <motion.div
+                      key={flight.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <FlightCard flight={flight} onBook={setBookedFlight} />
+                    </motion.div>
+                  ))
+                ) : (
                   <motion.div
-                    key={flight.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ delay: index * 0.05 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="rounded-[2.5rem] border border-dashed border-white/20 bg-white/5 p-12 py-16 text-center backdrop-blur-xl"
                   >
-                    <FlightCard flight={flight} onBook={setBookedFlight} />
+                    <Plane className="mx-auto mb-4 h-12 w-12 animate-pulse text-white/20" />
+                    <p className="font-bold tracking-widest text-white/40 uppercase">
+                      Рейсы не найдены
+                    </p>
                   </motion.div>
-                ))
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="rounded-[2.5rem] border border-dashed border-white/20 bg-white/5 p-12 py-16 text-center backdrop-blur-xl"
-                >
-                  <Plane className="mx-auto mb-4 h-12 w-12 animate-pulse text-white/20" />
-                  <p className="font-bold tracking-widest text-white/40 uppercase">
-                    Рейсы не найдены
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                )}
+              </AnimatePresence>
+            )}
           </div>
         </div>
       </div>
       <AnimatePresence>
         {bookedFlight && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-40 flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

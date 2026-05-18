@@ -47,7 +47,7 @@ export function LeadGeneration(): React.JSX.Element {
     <section
       ref={containerRef}
       aria-label="Обратная связь"
-      className="relative w-full overflow-hidden border-t border-b border-slate-200/60 py-30 dark:border-slate-900"
+      className="relative w-full overflow-hidden border-t border-b border-slate-200/60 py-30"
     >
       <div className="absolute inset-0 -z-20 overflow-hidden select-none">
         <motion.div
