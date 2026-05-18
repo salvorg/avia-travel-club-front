@@ -7,9 +7,10 @@ import { LogIn, Menu, Plane, X } from 'lucide-react';
 import { ROUTES } from '@/utils/routes';
 
 const NAV_LINKS = [
-  { href: ROUTES.ABOUT, label: 'О нас' },
+  { href: ROUTES.FLIGHTS, label: 'Авиабилеты' },
   { href: ROUTES.PRICE, label: 'Цены' },
   { href: ROUTES.TOURS, label: 'Туры' },
+  { href: ROUTES.ABOUT, label: 'О нас' },
   { href: ROUTES.HELP, label: 'Поддержка' },
   { href: ROUTES.CONTACT, label: 'Контакты' },
 ] as const;
@@ -59,7 +60,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-md relative font-medium text-white transition-colors hover:text-black`}
+              className={`text-md hover:text-main-orange relative font-medium text-white transition-colors`}
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-[#f97316] transition-all group-hover:w-full" />

@@ -66,14 +66,14 @@ export const FlightCard = React.memo(function FlightCard({
                 fill="none"
                 stroke="currentColor"
                 className="text-slate-200 dark:text-slate-800"
-                strokeWidth="2"
+                strokeWidth="1"
                 strokeDasharray="4 4"
               />
               <motion.path
                 d="M 0,15 Q 50,0 100,15"
                 fill="none"
                 stroke="url(#flightArcGradient)"
-                strokeWidth="2"
+                strokeWidth="1"
                 initial={{ strokeDasharray: '0 100' }}
                 animate={{ strokeDasharray: '100 100' }}
                 transition={{ duration: 1.5, ease: 'easeInOut' }}
@@ -90,9 +90,9 @@ export const FlightCard = React.memo(function FlightCard({
               className="absolute text-blue-600 dark:text-blue-400"
               animate={{ x: ['-45%', '45%'] }}
               transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
-              style={{ top: '2px' }}
+              style={{ top: '-2px' }}
             >
-              <Plane className="h-3.5 w-3.5 rotate-90" />
+              <Plane className="h-3.5 w-3.5 rotate-45" />
             </motion.div>
 
             <span className="mt-1 text-[10px] font-bold tracking-wider text-slate-400 uppercase">
